@@ -1,138 +1,119 @@
-# Do the necessary imports
-import argparse
-import shutil
-import base64
-from datetime import datetime
+import sys
 import os
-import cv2
-import numpy as np
 import socketio
-import eventlet
-import eventlet.wsgi
-from PIL import Image
-from flask import Flask
-from io import BytesIO, StringIO
-import json
-import pickle
+import base64
+import atexit
+
 import matplotlib.image as mpimg
-import time
+import numpy as np
 
-# Import functions for perception and decision making
-from perception import perception_step
-from decision import decision_step
-from supporting_functions import update_rover, create_output_images
-# Initialize socketio server and Flask application 
-# (learn more at: https://python-socketio.readthedocs.io/en/latest/)
-sio = socketio.Server()
-app = Flask(__name__)
+import eventlet.wsgi
+from flask import Flask
+from io import BytesIO
+from PIL import Image
 
-# Read in ground truth map and create 3-channel green version for overplotting
-# NOTE: images are read in by default with the origin (0, 0) in the upper left
-# and y-axis increasing downward.
-ground_truth = mpimg.imread('../calibration_images/map_bw.png')
-# This next line creates arrays of zeros in the red and blue channels
-# and puts the map into the green channel.  This is why the underlying 
-# map output looks green in the display image
-ground_truth_3d = np.dstack((ground_truth*0, ground_truth*255, ground_truth*0)).astype(np.float)
+from env_physics import EnvPhysics
+from rover_agent import RoverAgent
 
-# Define RoverState() class to retain rover state parameters
-class RoverState():
-    def __init__(self):
-        self.start_time = None # To record the start time of navigation
-        self.total_time = None # To record total duration of naviagation
-        self.img = None # Current camera image
-        self.pos = None # Current position (x, y)
-        self.yaw = None # Current yaw angle
-        self.pitch = None # Current pitch angle
-        self.roll = None # Current roll angle
-        self.vel = None # Current velocity
-        self.steer = 0 # Current steering angle
-        self.throttle = 0 # Current throttle value
-        self.brake = 0 # Current brake value
-        self.nav_angles = None # Angles of navigable terrain pixels
-        self.nav_dists = None # Distances of navigable terrain pixels
-        self.ground_truth = ground_truth_3d # Ground truth worldmap
-        self.mode = 'forward' # Current mode (can be forward or stop)
-        self.throttle_set = 0.2 # Throttle setting when accelerating
-        self.brake_set = 10 # Brake setting when braking
-        # The stop_forward and go_forward fields below represent total count
-        # of navigable terrain pixels.  This is a very crude form of knowing
-        # when you can keep going and when you should stop.  Feel free to
-        # get creative in adding new fields or modifying these!
-        self.stop_forward = 50 # Threshold to initiate stopping
-        self.go_forward = 500 # Threshold to go forward again
-        self.max_vel = 2 # Maximum velocity (meters/second)
-        # Image output from perception step
-        # Update this image to display your intermediate analysis steps
-        # on screen in autonomous mode
-        self.vision_image = np.zeros((160, 320, 3), dtype=np.float) 
-        # Worldmap
-        # Update this image with the positions of navigable terrain
-        # obstacles and rock samples
-        self.worldmap = np.zeros((200, 200, 3), dtype=np.float) 
-        self.samples_pos = None # To store the actual sample positions
-        self.samples_found = 0 # To count the number of samples found
-        self.near_sample = False # Set to True if within reach of a rock sample
-        self.pick_up = False # Set to True to trigger rock pickup
-# Initialize our rover 
-Rover = RoverState()
+from rover_resource import GROUND_TRUTH_MAP
+from rover_resource import METRIC_DTYPE
+
+from rover_replay import RoverReplay
+from rover_config import RoverConfig
+
+ROVER_AGENT = None
+ROVER_REPLAY = None
+
+# under truth map is not visible to agent
+WITH_SAMPLE_LOCATION = True
+# rock sample location is visible to agent
+WITH_MAP = False
+
+MODULE_PATH = os.path.dirname(__file__)
+
+ENV_PHYSIC = EnvPhysics(mpimg.imread(GROUND_TRUTH_MAP))
+
+FLASK_APP = Flask(__name__)
+
+SIO = socketio.Server()
+
+IMAGE_FOLDER = None
 
 
-# Define telemetry function for what to do with incoming data
-@sio.on('telemetry')
-def telemetry(sid, data):
-    if data:
-        global Rover
-        # Initialize / update Rover with current telemetry
-        Rover, image = update_rover(Rover, data)
+def parse_message(msg):
+  metrics = np.zeros(tuple(), dtype=METRIC_DTYPE)
+  metrics['Speed'] = np.float(msg["speed"])
+  pos = np.fromstring(msg["position"], dtype=float, sep=',')
+  metrics['X_Position'] = pos[0]
+  metrics['Y_Position'] = pos[1]
+  metrics['Yaw'] = np.float(msg["yaw"])
+  metrics['Pitch'] = np.float(msg["pitch"])
+  metrics['Roll'] = np.float(msg["roll"])
+  metrics['Throttle'] = np.float(msg["throttle"])
+  metrics['SteerAngle'] = np.float(msg["steering_angle"])
+  metrics['NearSample'] = np.int(msg["near_sample"])
+  metrics['PickingUp'] = np.int(msg['picking_up'])
+  frame = np.asarray(Image.open(
+    BytesIO(base64.b64decode(msg["image"]))))
+  return metrics, frame
 
-        if np.isfinite(Rover.vel):
 
-            # Execute the perception and decision steps to update the Rover's state
-            Rover = perception_step(Rover)
-            Rover = decision_step(Rover)
+@SIO.on('telemetry')
+def telemetry(sid, msg):
+  global ROVER_AGENT, ROVER_REPLAY
+  assert isinstance(ROVER_AGENT, RoverAgent)
+  if msg:
+    metrics, frame = parse_message(msg)
 
-            # Create output images to send to server
-            out_image_string1, out_image_string2 = create_output_images(Rover)
-
-            # The action step!  Send commands to the rover!
-            commands = (Rover.throttle, Rover.brake, Rover.steer)
-            send_control(commands, out_image_string1, out_image_string2)
- 
-            # If in a state where want to pickup a rock send pickup command
-            if Rover.pick_up:
-                send_pickup()
-                # Reset Rover flags
-                Rover.pick_up = False
-        # In case of invalid telemetry, send null commands
-        else:
-
-            # Send zeros for throttle, brake and steer and empty images
-            send_control((0, 0, 0), '', '')
-
-        # If you want to save camera images from autonomous driving specify a path
-        # Example: $ python drive_rover.py image_folder_path
-        # Conditional to save image frame if folder was specified
-        if args.image_folder != '':
-            timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S_%f')[:-3]
-            image_filename = os.path.join(args.image_folder, timestamp)
-            image.save('{}.jpg'.format(image_filename))
-
+    if not ENV_PHYSIC.started:
+      # control visibility of the game
+      ENV_PHYSIC.consume(msg)
+      ground_truth = None if WITH_SAMPLE_LOCATION \
+        else ENV_PHYSIC.ground_truth
+      sample_location = ENV_PHYSIC.samples_pos \
+        if WITH_MAP else None
+      ROVER_AGENT.set_env(ground_truth, sample_location)
+      ENV_PHYSIC.ckpt(os.path.join(EXPERIMENT_DIR, 'environment'))
     else:
-        sio.emit('manual', data={}, skip_sid=True)
+      ENV_PHYSIC.consume(msg)
 
-@sio.on('connect')
+    action = ROVER_AGENT.consume(metrics, frame)
+    print(action)
+
+    # save replay
+    if isinstance(ROVER_REPLAY, RoverReplay):
+      ROVER_REPLAY.consume(frame, metrics, ENV_PHYSIC.current_time)
+
+    # flush actions and debug information to environment
+    commands = (action.throttle, action.brake, action.steer)
+    pictures = ENV_PHYSIC.create_output_images(
+      ROVER_AGENT.world_map, ROVER_AGENT.local_vision)
+    send_control(commands, *pictures)
+
+    if action.pick_up:
+      send_pickup()
+
+  else:
+    print('switch to manual control')
+    SIO.emit('manual', data={}, skip_sid=True)
+    if isinstance(ROVER_REPLAY, RoverReplay):
+      ROVER_REPLAY.flush()
+
+
+@SIO.on('connect')
 def connect(sid, environ):
     print("connect ", sid)
     send_control((0, 0, 0), '', '')
     sample_data = {}
-    sio.emit(
+    SIO.emit(
         "get_samples",
         sample_data,
         skip_sid=True)
 
+
 def send_control(commands, image_string1, image_string2):
     # Define commands to be sent to the rover
+    print("sending control", len(image_string1), len(image_string2))
     data={
         'throttle': commands[0].__str__(),
         'brake': commands[1].__str__(),
@@ -141,45 +122,40 @@ def send_control(commands, image_string1, image_string2):
         'inset_image2': image_string2,
         }
     # Send commands via socketIO server
-    sio.emit(
-        "data",
-        data,
-        skip_sid=True)
+    SIO.emit("data", data, skip_sid=True)
+
 
 # Define a function to send the "pickup" command 
 def send_pickup():
     print("Picking up")
     pickup = {}
-    sio.emit(
-        "pickup",
-        pickup,
-        skip_sid=True)
+    SIO.emit("pickup", pickup, skip_sid=True)
+
+
+def exit_handle():
+  global ENV_PHYSIC
+  ROVER_REPLAY.flush()
+
+atexit.register(exit_handle)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Remote Driving')
-    parser.add_argument(
-        'image_folder',
-        type=str,
-        nargs='?',
-        default='',
-        help='Path to image folder. This is where the images from the run will be saved.'
-    )
-    args = parser.parse_args()
-    
-    os.system('rm -rf IMG_stream/*')
-    if args.image_folder != '':
-        print("Creating image folder at {}".format(args.image_folder))
-        if not os.path.exists(args.image_folder):
-            os.makedirs(args.image_folder)
-        else:
-            shutil.rmtree(args.image_folder)
-            os.makedirs(args.image_folder)
-        print("Recording this run ...")
-    else:
-        print("NOT recording this run ...")
-    
-    # wrap Flask application with socketio's middleware
-    app = socketio.Middleware(sio, app)
 
-    # deploy as an eventlet WSGI server
-    eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
+  assert len(sys.argv) >= 3, \
+    'usage: python drive_rover.py experiment_dir save_replay=[True or False]'
+
+  EXPERIMENT_DIR = sys.argv[1]
+
+  if sys.argv[2].lower() == 'true':
+    ROVER_REPLAY = RoverReplay(
+      os.path.join(EXPERIMENT_DIR, 'replay'))
+
+  config = os.path.join(EXPERIMENT_DIR, 'agent_spec.cfg')
+  config = RoverConfig(config_path=config)
+
+  WITH_SAMPLE_LOCATION, WITH_MAP = config.with_sample_location, config.with_map
+
+  ROVER_AGENT = RoverAgent(config, debug=False)
+
+  FLASK_APP = socketio.Middleware(SIO, FLASK_APP)
+
+  eventlet.wsgi.server(eventlet.listen(('', 4567)), FLASK_APP)
