@@ -1,3 +1,4 @@
+import os
 import configparser
 
 
@@ -10,10 +11,13 @@ class RoverConfig(object):
     if config_path is not None:
       config = configparser.ConfigParser()
       config.read(config_path)
-
     self._config = config
 
-    self._path = config['AGENT']['Path']
+    if 'Path' in config['AGENT']:
+      self._path = config['AGENT']['Path']
+    else:
+      self._path = os.path.dirname(os.path.abspath(config_path))
+
     self._perception = config['AGENT']['Perception']
     self._reactor = config['AGENT']['Reactor']
     self._proactor = config['AGENT']['Proactor']
@@ -23,12 +27,17 @@ class RoverConfig(object):
     self._with_sample_location = config.getboolean(
       'GAME', 'WithSampleLocation')
 
-    self._replay_format = config.get('REPLAY', 'FORMAT')
+    self._replay_format = config.get('REPLAY', 'Format')
 
-    if 'RELATIVE_PATH' in config['REPLAY']:
-      self._replay_relative = config['REPLAY']['RELATIVE_PATH']
+    if 'RelativePath' in config['REPLAY']:
+      self._replay_relative = config['REPLAY']['RelativePath']
     else:
       self._replay_relative = None
+
+  def override_config(self, configs):
+    for k, kvs in configs.items():
+      for sk, sv in kvs.items():
+        self._config[k][sk] = sv
 
   @property
   def path(self):

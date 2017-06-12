@@ -1,4 +1,5 @@
 import numpy as np
+from ._interface import PerspectiveTransform
 
 
 def perspective_matrix_bias(e, c):
@@ -11,16 +12,12 @@ def perspective_matrix_bias(e, c):
   return w, b
 
 
-
-class CalibratedPerspectiveInference(object):
-
+class CalibratedPerspectiveInference(PerspectiveTransform):
   """
   calibrated perspective transform
   
   parameter obtained by numeric optimization and strong geometric assumption
-  
-  more accurate than opencv build in perspective transform estimation
-  
+
   """
 
   def __init__(self, camera_pos, view_pos):
@@ -29,11 +26,11 @@ class CalibratedPerspectiveInference(object):
       camera_pos, view_pos)
     self._ex = view_pos[0]
 
-  def get_singular(self):
+  def get_singular(self, roll, pitch):
     return self._ex
 
-  def particle_transform(self, particles):
+  def particle_transform(self, roll, pitch, particles):
     ret = self._w @ particles + self._b
     denominator = self._ex - particles[0:1, :]
     ret /= denominator
-    return ret.transpose()
+    return ret

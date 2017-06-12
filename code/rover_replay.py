@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from rover_resource import METRIC_DTYPE
+from rover_spec import METRIC_DTYPE
 
 
 class RoverReplay(object):

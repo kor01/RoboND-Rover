@@ -15,8 +15,8 @@ from PIL import Image
 from env_physics import EnvPhysics
 from rover_agent import RoverAgent
 
-from rover_resource import GROUND_TRUTH_MAP
-from rover_resource import METRIC_DTYPE
+from rover_spec import GROUND_TRUTH_MAP
+from rover_spec import METRIC_DTYPE
 
 from rover_replay import RoverReplay
 from rover_config import RoverConfig

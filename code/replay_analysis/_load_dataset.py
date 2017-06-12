@@ -1,9 +1,9 @@
 import os
 import numpy as np
 import matplotlib.image as mpimg
-from rover_resource import STR_SCHEMA
-from rover_resource import STR_SCHEMA_ROW
-from rover_resource import METRIC_DTYPE
+from rover_spec import STR_SCHEMA
+from rover_spec import STR_SCHEMA_ROW
+from rover_spec import METRIC_DTYPE
 
 
 class Experience(object):
@@ -65,9 +65,9 @@ def load_replay_from_csv(path, experiment_dir=None):
 
   frames = None
   for index, img in enumerate(images):
-
     if experiment_dir is not None:
-      img = os.path.join(experiment_dir, img)
+      img = os.path.basename(img)
+      img = os.path.join(experiment_dir, 'IMG', img)
 
     image = mpimg.imread(img)
     if frames is None:

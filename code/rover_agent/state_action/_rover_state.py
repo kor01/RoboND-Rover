@@ -1,5 +1,6 @@
 from ._raw_state import RawState
 
+
 class RoverState(object):
 
   def __init__(self, raw: RawState, perception, reactor, proactor):

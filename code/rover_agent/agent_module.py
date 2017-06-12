@@ -11,8 +11,7 @@ class AgentModule(metaclass=abc.ABCMeta):
    and perform initialization
   """
 
-  def __init__(self, global_step: GlobalStep,
-               config, debug=False):
+  def __init__(self, global_step, config, debug):
     self._debug = debug
     self._debug_info = []
     self._step = global_step
@@ -34,9 +33,6 @@ class AgentModule(metaclass=abc.ABCMeta):
     self._debug_info = []
 
 
-RoverModuleSpec = namedtuple('RoverModuleSpec', ('name', 'config'))
-
-
 class ModuleRegistry(object):
 
   def __init__(self, base_module: str):
@@ -44,19 +40,19 @@ class ModuleRegistry(object):
     self._base_module = tuple(base_module.split('.'))
     self._ctrs = {}
 
-  def create_instance(self, name, config, step, debug):
+  def create_instance(self, cname, config, step, debug):
 
-    if name in self._ctrs:
-      ctr = self._ctrs[name]
+    if cname in self._ctrs:
+      ctr = self._ctrs[cname]
       ret = ctr(step, config, debug)
       return ret
 
-    name = name.split('.')
+    name = cname.split('.')
     mod_name = self._base_module + tuple(name[:-1])
     mod_name = '.'.join(mod_name)
     importlib.import_module(mod_name)
-    assert name in self._ctrs
-    ctr = self._ctrs[name]
+    assert cname in self._ctrs
+    ctr = self._ctrs[cname]
     ret = ctr(step, config, debug)
     return ret
 

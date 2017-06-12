@@ -1,7 +1,6 @@
 from rover_config import RoverConfig
 
 from rover_agent.perception import create_perception
-
 from rover_agent.navi_policy.proactive import create_proactor
 from rover_agent.navi_policy.reactive import create_reactor
 
@@ -10,7 +9,6 @@ from rover_agent.state_action import RawState
 from rover_agent.state_action import ActionDistribution
 
 from ._global_step import GlobalStep
-
 
 
 class RoverAgent(object):
@@ -23,9 +21,13 @@ class RoverAgent(object):
 
     self._step = GlobalStep()
 
-    self._perception = create_perception(config.perception, config, debug)
-    self._proactor = create_proactor(config.proactor, self._step, debug)
-    self._reactor = create_reactor(config.reactor, self._step, debug)
+    self._perception = create_perception(
+      config.perception, config, self._step, debug)
+
+    self._proactor = create_proactor(
+      config.proactor, config, self._step, debug)
+    self._reactor = create_reactor(
+      config.reactor, config, self._step, debug)
     self._sample = (config.inference_mode != 'MAP')
 
     raw_state = RawState()
@@ -39,7 +41,7 @@ class RoverAgent(object):
 
   def consume(self, metrics, frame, distribution=False):
     """
-    :param metrics: the metrics data, dtype defined in rover_resource
+    :param metrics: the metrics data, dtype defined in rover_spec
     :param frame: the frame image
     :param distribution: return distribution of actions
     :return: action to take
@@ -52,7 +54,7 @@ class RoverAgent(object):
 
     # increment global step for debug
     self._step.increment()
-
+    
     if distribution:
       return action
 

@@ -1,4 +1,5 @@
 import numpy as np
+from ._interface import PerspectiveTransform
 
 
 def perspective_numerator(e, c, pitch, roll):
@@ -18,6 +19,7 @@ def perspective_numerator(e, c, pitch, roll):
                 + (cy * ey - cz * ex * pc + cz * ez * ps) * rs]])
 
   return w, b
+
 
 def perspective_denominator(pitch, roll, e):
 
@@ -43,21 +45,20 @@ def singular_line(ty, e, pitch, roll):
   ex, ey, ez = e
   ps, pc = np.sin(pitch), np.cos(pitch)
   rs, rc = np.sin(roll), np.cos(roll)
-  return ex - ez * ps / pc  - (ey - ty) * rs / (rc *  pc)
+  return ex - ez * ps / pc - (ey - ty) * rs / (rc * pc)
 
 
-class ZXYRotatedPerspectiveInference(object):
-  def __init__(self, camera_pos, view_pos):
+class ZXYRotatedPerspectiveInference(PerspectiveTransform):
+  def __init__(self, camera_pos, view_pos, horizon_length):
     self._c = camera_pos
     self._e = view_pos
+    self._h = horizon_length
 
-
-  def get_singular(self, pitch, roll, horizon_length):
+  def get_singular(self, pitch, roll):
 
     min_x = min(singular_line(0, self._e, pitch, roll),
-                singular_line(horizon_length, self._e, pitch, roll))
+                singular_line(self._h, self._e, pitch, roll))
     return min_x
-
 
   def particle_transform(
       self, roll, pitch, particles) -> np.ndarray:
@@ -72,13 +73,10 @@ class ZXYRotatedPerspectiveInference(object):
     w, b = perspective_denominator(pitch, roll, e)
 
     denominator = w @ particles + b
-    return (numerator / denominator).transpose()
+    return numerator / denominator
 
 
 def generate_coordinate(frame_shape):
   coord_x, coord_y = np.meshgrid(
     range(frame_shape[0]), range(frame_shape[1]))
   return np.array([coord_x, coord_y])
-
-
-

@@ -1,4 +1,5 @@
 import numpy as np
+from ._interface import PerspectiveTransform
 
 
 def perspective_numerator(e, c, pitch, roll):
@@ -18,6 +19,7 @@ def perspective_numerator(e, c, pitch, roll):
                        cy * ez * ps + (-cz * ex + cy * ey * pc) * rs)]])
 
   return w, b
+
 
 def perspective_denominator(pitch, roll, e):
 
@@ -42,21 +44,25 @@ def singular_line(ty, e, pitch, roll):
   ex, ey, ez = e
   ps, pc = np.sin(pitch), np.cos(pitch)
   rs, rc = np.sin(roll), np.cos(roll)
-  return ex - ez * ps / pc  - (ey - ty) * rs / (rc *  pc)
+  return ex - ez * ps / pc - (ey - ty) * rs / (rc * pc)
 
 
-class ZYXRotatedPerspectiveInference(object):
-  def __init__(self, camera_pos, view_pos):
+class ZYXRotatedPerspectiveInference(PerspectiveTransform):
+  def __init__(self, camera_pos, view_pos, horizon_length):
     self._c = camera_pos
     self._e = view_pos
+    self._h = horizon_length
 
+  def denominator(self, roll, pitch):
+    r = generate_rotation(roll, pitch)
+    e = r @ self._e
+    w, b = perspective_denominator(pitch, roll, e)
+    return w[0], w[1], b[0]
 
-  def get_singular(self, pitch, roll, horizon_length):
-
-    min_x = min(singular_line(0, self._e, pitch, roll),
-                singular_line(horizon_length, self._e, pitch, roll))
-    return min_x
-
+  def get_singular(self, pitch, roll):
+    max_x = max([singular_line(0, self._e, pitch, roll),
+                 singular_line(self._h, self._e, pitch, roll)])
+    return max_x
 
   def particle_transform(
       self, roll, pitch, particles) -> np.ndarray:
@@ -71,4 +77,4 @@ class ZYXRotatedPerspectiveInference(object):
     w, b = perspective_denominator(pitch, roll, e)
 
     denominator = w @ particles + b
-    return (numerator / denominator).transpose()
+    return numerator / denominator

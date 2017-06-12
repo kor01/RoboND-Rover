@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from ._interface import ParticleExtractor
 
 
 def zoom_in(img: np.ndarray, boundary, factor: np.ndarray):
@@ -9,7 +10,7 @@ def zoom_in(img: np.ndarray, boundary, factor: np.ndarray):
   return cv2.resize(img, (shape[1], shape[0]), fx=0, fy=0)
 
 
-class StripwiseInterpolation(object):
+class StripwiseInterpolation(ParticleExtractor):
   def __init__(self, view_singular, pixel_factor, extractor):
     self._pixel_factor = pixel_factor
     self._extractor = extractor
@@ -24,7 +25,7 @@ class StripwiseInterpolation(object):
     strip_size = view_singular - lower_boundary[1]
 
     self._mid_factor, self._top_factor \
-      = np.array([[3], [2]]), np.array([[16], [2]])
+      = np.array([[3], [2]]), np.array([[6], [2]])
 
     self._boundary_factor = 2
 
@@ -47,9 +48,9 @@ class StripwiseInterpolation(object):
     particles /= self._pixel_factor
     return particles
 
-  def extract_particles(self, coords: np.ndarray, singular=None):
-    if singular is not None:
-      self._adjust_parameter(singular)
+  def extract_particles(self, coords: np.ndarray, singularity=None):
+    if singularity is not None:
+      self._adjust_parameter(singularity)
 
     boundary = self._lower_boundary
 
@@ -66,4 +67,3 @@ class StripwiseInterpolation(object):
 
     return np.concatenate(
       [lower_particles, mid_particles, top_particles], axis=1)
-

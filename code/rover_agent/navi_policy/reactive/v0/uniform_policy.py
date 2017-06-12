@@ -6,6 +6,7 @@ from rover_agent.navi_policy.reactive import register_reactor
 
 from rover_agent import state_action as sa
 
+
 @register_reactor
 class UniformPolicy(ReactivePolicy):
   """

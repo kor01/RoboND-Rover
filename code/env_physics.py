@@ -160,7 +160,7 @@ class EnvPhysics(object):
     pil_img = Image.fromarray(map_add.astype(np.uint8))
     # for replay analysis
     if not serialize:
-      return  fidelity, perc_mapped, pil_img, vision_image
+      return fidelity, perc_mapped, pil_img, vision_image
 
     buff = BytesIO()
     pil_img.save(buff, format="JPEG")

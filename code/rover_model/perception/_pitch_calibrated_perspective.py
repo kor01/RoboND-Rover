@@ -1,4 +1,5 @@
 import numpy as np
+from ._interface import PerspectiveTransform
 
 
 def perspective_denominator(e, pitch):
@@ -33,17 +34,17 @@ def generate_rotation(pitch):
   return rp
 
 
-class PitchCalibratedPerspectiveInference(object):
+class PitchCalibratedPerspectiveInference(PerspectiveTransform):
 
   def __init__(self, camera_pos, view_pos):
     self._e = view_pos
     self._c = camera_pos
 
-  def get_singular(self, pitch):
+  def get_singular(self, pitch, roll):
     ex, ez = self._e[0], self._e[2]
     return ex - ez * np.tan(pitch)
 
-  def particle_transform(self, pitch, particles):
+  def particle_transform(self, roll, pitch, particles):
 
     rot = generate_rotation(pitch)
 
@@ -57,5 +58,5 @@ class PitchCalibratedPerspectiveInference(object):
 
     denominator = w @ particles + b
 
-    return (numerator / denominator).transpose()
+    return numerator / denominator
 

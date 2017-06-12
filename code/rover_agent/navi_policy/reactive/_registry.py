@@ -10,5 +10,6 @@ def register_reactor(cls):
   return cls
 
 
-def create_reactor(spec, step, debug):
-  return _REACTIVE_POLICY_CTRS.create_instance(spec, step, debug)
+def create_reactor(name, config, step, debug):
+  return _REACTIVE_POLICY_CTRS.create_instance(
+    name, config, step, debug)

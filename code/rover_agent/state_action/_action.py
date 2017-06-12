@@ -6,25 +6,32 @@ Action = namedtuple('Action', ('throttle', 'brake', 'steer', 'pick_up'))
 
 BRAKE_MIN = 0.0
 BRAKE_MAX = 1.0
-BRAKE_STEP = 0.1
+BRAKE_STEP = 0.5
 
 STEER_MIN = -15.0
 STEER_MAX = 15.0
-STEER_STEP = 0.1
+STEER_STEP = 3
 
 THROTTLE_MIN = -1.0
 THROTTLE_MAX = 1.0
-THROTTLE_STEP = 0.1
+THROTTLE_STEP = 0.5
 
 # noinspection PyTypeChecker
 THROTTLE_SHAPE = (np.around((THROTTLE_MAX - THROTTLE_MIN)
                             / THROTTLE_STEP).astype(np.uint32),)
+
+THROTTLE_DIM = THROTTLE_SHAPE[0]
 # noinspection PyTypeChecker
 STEER_SHAPE = (np.around((STEER_MAX - STEER_MIN)
                          / STEER_STEP).astype(np.uint32),)
+
+STEER_DIM = STEER_SHAPE[0]
+
 # noinspection PyTypeChecker
 BRAKE_SHAPE = (np.around((BRAKE_MAX - BRAKE_MIN)
                          / BRAKE_STEP).astype(np.uint32),)
+
+BRAKE_DIM = BRAKE_SHAPE[0]
 
 # noinspection PyTypeChecker
 ZERO_BRAKE = np.around((-BRAKE_MIN)
@@ -93,19 +100,19 @@ class ActionDistribution(object):
 
   @property
   def throttle(self):
-    return self._throttle.copy()
+    return self._throttle
 
   @property
   def brake(self):
-      return self._brake.copy()
+      return self._brake
 
   @property
   def steer(self):
-      return self._steer.copy()
+      return self._steer
 
   @property
   def switch(self):
-    return self._switch.copy()
+    return self._switch
 
   def sample(self) -> Action:
     # sample switch

@@ -1,5 +1,5 @@
 import numpy as np
-from rover_resource import METRIC_DTYPE
+from rover_spec import METRIC_DTYPE
 
 
 class RawState(object):
@@ -21,6 +21,7 @@ class RawState(object):
     self.samples_found = 0
     self.near_sample = False
     self.picking_up = False
+    self._ground_truth = None
 
   def set_env(self, ground_truth, sample_location):
     self.samples_pos = sample_location

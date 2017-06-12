@@ -10,5 +10,6 @@ def register_proactor(cls):
   return cls
 
 
-def create_proactor(spec, step, debug):
-  return _PROACTIVE_POLICY_CTRS.create_instance(spec, step, debug)
+def create_proactor(name, config, step, debug):
+  return _PROACTIVE_POLICY_CTRS.create_instance(
+    name, config, step, debug)

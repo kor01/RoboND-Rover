@@ -6,11 +6,12 @@ from rover_agent import RoverAgent
 from rover_agent import AgentModule
 from rover_config import RoverConfig
 from env_physics import EnvPhysics
-from rover_resource import GROUND_TRUTH_MAP
+
+from rover_spec import GROUND_TRUTH_MAP
+from rover_spec import PROJECT_DIR
 
 from ._load_dataset import load_replay_from_csv
 from ._load_dataset import load_replay
-
 
 FrameExperience = namedtuple(
   'FrameExperience', ('frame', 'metric', 'debug',
@@ -44,7 +45,6 @@ def _create_index(mod: AgentModule):
 
 
 class DebugInfo(object):
-
   def __init__(self, agent: RoverAgent):
 
     self._perception = \
@@ -76,9 +76,12 @@ class ExperienceRelay(object):
     """
     :param path: path to a experiment directory  
     """
+    self._views, self._actions = [], []
+    self._debug_info = None
 
     if path is not None:
-      config = RoverConfig(config_path=path)
+      config = os.path.join(path, 'agent_spec.cfg')
+      config = RoverConfig(config_path=config)
     assert config is not None, 'config not set'
 
     self._config, self._debug = config, debug
@@ -97,9 +100,9 @@ class ExperienceRelay(object):
     if self._config.replay_format == 'csv':
       csv = os.path.join(path, 'replay/robot_log.csv')
       if self._config.replay_relative is not None:
-        frame_dir = os.path.dirname(os.path.abspath(__file__))
-        frame_dir = os.path.abspath(frame_dir + '/../../records')
-        frame_dir = os.path.join(frame_dir, self._config.replay_relative)
+        frame_dir = os.path.join(
+          PROJECT_DIR, 'records', self._config.replay_relative)
+        assert os.path.exists(frame_dir)
       else:
         frame_dir = None
       self._experience = load_replay_from_csv(csv, frame_dir)
@@ -118,15 +121,12 @@ class ExperienceRelay(object):
     sample_pos = self._env.samples_pos if with_sample_location else None
     self._agent.set_env(true_map, sample_pos)
 
-    self._actions = None
-    self._views = None
+    self._views, self._actions = [], []
     self._debug_info = None
 
   def replay(self, distribution=False):
-    self._actions = []
-    self._views = []
+    self._actions, self._views = [], []
     for frame, metrics, tm in self._experience:
-
       self._env.consume(None, tm)
       actions = self._agent.consume(
         metrics, frame, distribution=distribution)
@@ -134,7 +134,6 @@ class ExperienceRelay(object):
       ret = self._env.create_output_images(
         self._agent.world_map,
         self._agent.local_vision, serialize=False)
-
       self._views.append(ret)
     self._debug_info = DebugInfo(self.agent)
 
@@ -181,7 +180,7 @@ class ExperienceRelay(object):
     return len(self._experience)
 
   def reset_config(self, config):
-    self._config = RoverConfig(config=config)
+    self._config.override_config(config)
     self._setup_agent()
 
   @property
