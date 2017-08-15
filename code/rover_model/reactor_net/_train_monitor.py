@@ -1,6 +1,7 @@
 import os
 import time
 import threading
+import datetime
 import tensorflow as tf
 
 tf.flags.DEFINE_integer('lr_decay_step', 8192,
@@ -8,8 +9,7 @@ tf.flags.DEFINE_integer('lr_decay_step', 8192,
 
 tf.flags.DEFINE_string('ckpt_dir', None, 'checkpoint path')
 tf.flags.DEFINE_integer('ckpt_step', 1024, 'check point steps')
-tf.flags.DEFINE_integer('footage_cycle',
-                        8192, 'cycles to read next footage')
+tf.flags.DEFINE_integer('footage_cycle', 8192, 'cycles to read next footage')
 
 
 FLAGS = tf.flags.FLAGS
@@ -33,7 +33,14 @@ class ReactorTrainMonitor(object):
         self._learning_rate / 2)
     else:
       self._assign = None
+
+    # check previously saved model
     self._saver = tf.train.Saver()
+    ckpt = tf.train.get_checkpoint_state(FLAGS.ckpt_dir)
+    if ckpt:
+      timestamp = str(datetime.datetime.now().ctime())
+      print('[%s] restoring from ckpt' % timestamp)
+      self._saver.restore(sess, FLAGS.ckpt_dir)
 
   def join(self):
     self._should_stop = True
@@ -52,23 +59,25 @@ class ReactorTrainMonitor(object):
   def _run(self):
     while not self._should_stop:
       step = self._sess.run(self._global_step)
-      ckpt_steps = step / FLAGS.ckpt_step
+      ckpt_steps = step // FLAGS.ckpt_step
       if ckpt_steps > self._ckpt_steps:
         path = os.path.join(FLAGS.ckpt_dir, 'reactor_model')
         self._saver.save(
           self._sess, path, self._global_step)
         self._ckpt_steps += 1
 
-      lr_steps = step / FLAGS.lr_decay_step
+      lr_steps = step // FLAGS.lr_decay_step
       if lr_steps > self._lr_steps \
           and self._assign is not None:
         self._sess.run(self._assign)
         self._lr_steps += 1
 
-      footage_steps = step / FLAGS.footage_cycle
+      footage_steps = step // FLAGS.footage_cycle
       if footage_steps > self._footage_steps \
+          and footage_steps > 0 \
           and self._dataset.num_footage > 1:
         self._dataset.read_next(self._sess)
+        self._footage_steps += 1
       time.sleep(1)
 
   def run(self):

@@ -1,6 +1,7 @@
 import tensorflow as tf
 from collections import namedtuple
-from ._reactor_net import ReactorOutput
+from ._reactor_net import SpeedControl
+
 
 tf.flags.DEFINE_float('learning_rate', 0.001,
                       'initial learning rate')
@@ -9,9 +10,6 @@ tf.flags.DEFINE_float('learning_rate', 0.001,
 tf.flags.DEFINE_boolean('use_adam', True, 'use_adam optimizer')
 
 FLAGS = tf.flags.FLAGS
-
-ReactorLoss = namedtuple(
-  'ReactorLoss', ('total', 'steer', 'speed'))
 
 
 def xent_loss(labels, logits, weights=None):
@@ -22,10 +20,15 @@ def xent_loss(labels, logits, weights=None):
   return tf.reduce_mean(loss)
 
 
-def reactor_loss(
-    output: ReactorOutput, label: ReactorOutput):
+def steer_loss(steer_control, steer_label):
+  ret = xent_loss(labels=steer_label,
+                  logits=steer_control[1])
+  return ret
 
-  _, throttle = output.throttle
+
+def speed_loss(speed_control: SpeedControl,
+               label: SpeedControl):
+  _, throttle = speed_control.throttle
 
   weights = tf.to_float(label.switch)
 
@@ -33,32 +36,28 @@ def reactor_loss(
     labels=label.throttle, logits=throttle,
     weights=1 - weights)
 
-  _, brake = output.brake
+  _, brake = speed_control.brake
   brake_loss = xent_loss(
     labels=label.brake, logits=brake,
     weights=weights)
 
-  _, steer = output.steer
-  steer_loss = xent_loss(labels=label.steer, logits=steer)
+  _, switch = speed_control.switch
+  
+  switch_loss = xent_loss(
+    labels=label.switch, logits=switch)
 
-  _, switch = output.switch
-  switch_loss = xent_loss(labels=label.switch, logits=steer)
-
-  # switch = 0 (throttle mode); switch = 1 (brake mode)
-
-  speed_loss = throttle_loss + brake_loss + switch_loss
-  loss = speed_loss + steer_loss
-
-  return ReactorLoss(total=loss, steer=steer_loss,
-                     speed=speed_loss)
-
+  ret = throttle_loss + brake_loss + switch_loss
+  return ret
 
 ReactorTrain = namedtuple(
   'ReactorTrain', ('learning_rate',
-                   'global_step', 'train_op'))
+                   'global_step', 'train_op', 'loss'))
 
 
-def reactor_train(loss, target_scope=None):
+def reactor_train(losses):
+
+  assert len(losses) > 0, 'at least one loss'
+  loss = sum(losses)
 
   with tf.variable_scope('train'):
 
@@ -78,17 +77,9 @@ def reactor_train(loss, target_scope=None):
       optimizer = tf.train.GradientDescentOptimizer(
         learning_rate=learning_rate)
 
-    if target_scope is not None:
-      var_list = tf.get_collection(
-        tf.GraphKeys.TRAINABLE_VARIABLES,
-        target_scope.name)
-      assert len(var_list) > 0, 'empty var_list'
-    else:
-      var_list = None
+    train_op = optimizer.minimize(loss, global_step)
 
     # for stage training
-    train_op = optimizer.minimize(
-      loss, global_step, var_list=var_list)
     return ReactorTrain(learning_rate=learning_rate,
                         global_step=global_step,
-                        train_op=train_op)
+                        train_op=train_op, loss=loss)

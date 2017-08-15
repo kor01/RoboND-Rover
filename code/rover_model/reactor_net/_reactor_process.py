@@ -14,16 +14,20 @@ def discretize_action(low, step, dim, data):
   return data
 
 
+def save_tensor(arr: np.ndarray, path):
+  assert arr.flags.c_contiguous
+  with open(path, 'wb') as op:
+    op.write(arr.data)
+
+
 def process_records(input_path, output_path):
 
-  experience = load_replay_from_csv(input_path)
+  img_dir = os.path.dirname(input_path)
+  experience = load_replay_from_csv(input_path, img_dir)
 
-  frame_path = os.path.join(output_path, 'frames.npy')
-  np.save(frame_path, experience.frames)
   frames_bin = os.path.join(
     output_path, 'frames.uint8.bin')
-  with open(frames_bin, 'wb') as op:
-    op.write(experience.frames.data)
+  save_tensor(experience.frames, frames_bin)
 
   pitch = degree_to_rad(experience.metrics['Pitch'])
   roll = degree_to_rad(experience.metrics['Roll'])
@@ -34,9 +38,9 @@ def process_records(input_path, output_path):
   speed = experience.metrics['Speed']
   features = np.array(
     [pc, ps, rc, rs, speed], dtype=np.float32)
-  features = features.transpose()
-  feature_path = os.path.join(output_path, 'features.npy')
-  np.save(feature_path, features)
+  features_copy = features.transpose().copy()
+  feature_path = os.path.join(output_path, 'features.float32.bin')
+  save_tensor(features_copy, feature_path)
 
   steer = discretize_action(
     sa.STEER_MIN, sa.STEER_STEP, sa.STEER_DIM,
@@ -52,7 +56,12 @@ def process_records(input_path, output_path):
 
   switch = np.greater(brake, 0).astype('int32')
   labels = np.array([throttle, brake, steer, switch])
+  label_path = os.path.join(output_path, 'labels.int32.bin')
+  save_tensor(labels, label_path)
 
-  label_path = os.path.join(output_path, 'labels.npy')
-  np.save(label_path, labels)
-
+  true_steer = degree_to_rad(experience.metrics['SteerAngle'])
+  true_steer = np.array(
+    [np.cos(true_steer), np.sin(true_steer)], dtype=np.float32)
+  true_steer = true_steer.transpose().copy()
+  true_steer_path = os.path.join(output_path, 'true_steer.float32.bin')
+  save_tensor(true_steer, true_steer_path)

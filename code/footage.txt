@@ -1,0 +1,3 @@
+/home/pu/dataset/rover_train/LC_20170613
+/home/pu/dataset/rover_train/RC_20170613
+/home/pu/dataset/rover_train/SL_20170614

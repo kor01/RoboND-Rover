@@ -1,0 +1,13 @@
+python -m rover_model.reactor_net \
+       --footage=./footage.txt \
+       --ckpt_dir=/home/pu/workspace/models/rover_reactor_am_june_15/ \
+       --learning_rate=0.001 \
+       --timesteps='[32, 48, 64, 80]' \
+       --batch_size=8  \
+       --ckpt_step=4096 \
+       --lr_decay_step=131072 \
+       --footage_cycle=1024 \
+       --stage=both \
+       --use_features=True \
+       --share_param=True \
+       --cpu_only=False

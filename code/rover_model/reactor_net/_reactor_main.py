@@ -1,5 +1,7 @@
 import atexit
 import time
+import os
+import datetime
 import tensorflow as tf
 from ._train_thread import ReactorTrainThread
 from ._reactor_dataset import ReactorDataSet
@@ -16,8 +18,10 @@ tf.flags.DEFINE_string('timesteps', "[4, 8, 16, 32]",
 
 tf.flags.DEFINE_integer('batch_size', 8, 'batch size of training')
 
-tf.flags.DEFINE_string('data_dir', None, 'input data path')
+tf.flags.DEFINE_string('data_dir', None, 'dir to output binary footage data')
 tf.flags.DEFINE_string('record_dir', None, 'play record directory')
+tf.flags.DEFINE_string('footage', None, 'footage list path')
+tf.flags.DEFINE_boolean('cpu_only', False, 'use cpu for training (debug)')
 
 FLAGS = tf.flags.FLAGS
 
@@ -27,15 +31,17 @@ def process_main():
 
 
 def train_main():
+  if FLAGS.cpu_only:
+    os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
   scope = tf.VariableScope(
     name=FLAGS.scope_name, reuse=False)
-  dataset = ReactorDataSet(FLAGS.data_dir)
+  dataset = ReactorDataSet(FLAGS.footage)
 
   timesteps = eval(FLAGS.timesteps)
-  threads = [ReactorTrainThread(
+  threads = tuple([ReactorTrainThread(
     i, t, FLAGS.batch_size, dataset, scope)
-    for i, t in enumerate(timesteps)]
+    for i, t in enumerate(timesteps)])
 
   assert len(threads) > 0, 'threads size > 0'
   gpu_options = tf.GPUOptions(
@@ -58,8 +64,9 @@ def train_main():
   monitor.run()
 
   def clean_up():
-    print('running clean up')
     if not monitor.stopped:
+      timestamp = str(datetime.datetime.now().ctime())
+      print('[%s] running clean up' % timestamp)
       monitor.join()
       coord.request_stop()
       coord.join()
@@ -72,4 +79,5 @@ def train_main():
     try:
       time.sleep(30)
     except KeyboardInterrupt:
+      clean_up()
       break
