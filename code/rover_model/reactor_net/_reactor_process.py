@@ -2,7 +2,7 @@ import os
 import numpy as np
 from replay_analysis import load_replay_from_csv
 from rover_model.geometry import degree_to_rad
-from rover_agent import state_action as sa
+from rover import state_action as sa
 
 
 def discretize_action(low, step, dim, data):

@@ -1,25 +1,27 @@
 import numpy as np
-from ._interface import PerspectiveTransform
+from .interface import PerspectiveTransform
 
 
 def perspective_matrix_bias(e, c):
   ex, ey, ez = e
   cx, cy, cz = c
-  w = np.array([[-cx - ez, 0], [-cy + ey, -cz - ex]], dtype=np.float64)
-  b = np.array([[cx * ex - ez*cz], [cy*ex + cz*ey]], dtype=np.float64)
+  w = np.array([[-cx - ez, 0], [-cy + ey, -cz - ex]],
+               dtype=np.float64)
+  b = np.array([[cx * ex - ez * cz], [cy * ex + cz * ey]],
+               dtype=np.float64)
   return w, b
 
 
-class CalibratedPerspectiveInference(PerspectiveTransform):
+class CalibratedPerspective(PerspectiveTransform):
   """
   calibrated perspective transform
-  
-  parameter obtained by numeric optimization and strong geometric assumption
+
+  parameter obtained by numeric optimization
+  and strong geometric assumption
 
   """
 
   def __init__(self, camera_pos, view_pos):
-
     self._w, self._b = perspective_matrix_bias(
       camera_pos, view_pos)
     self._ex = view_pos[0]

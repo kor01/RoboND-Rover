@@ -4,6 +4,7 @@ import matplotlib.image as mpimg
 
 GradientMetric = namedtuple('GradientMetric', ('pos', 'neg', 'render', 'ratio'))
 
+
 class GradientAnalysis(object):
 
   def __init__(self, ground_truth):

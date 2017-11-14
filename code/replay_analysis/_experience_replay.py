@@ -2,10 +2,10 @@ import os
 import matplotlib.image as mpimg
 from collections import defaultdict
 from collections import namedtuple
-from rover_agent import RoverAgent
-from rover_agent import AgentModule
+from rover import RoverAgent
+from rover import RoverModule
 from rover_config import RoverConfig
-from env_physics import EnvPhysics
+from game_env import GameEnvironment
 
 from rover_spec import GROUND_TRUTH_MAP
 from rover_spec import PROJECT_DIR
@@ -36,7 +36,7 @@ def get_debug_values(frames, key):
   return ret
 
 
-def _create_index(mod: AgentModule):
+def _create_index(mod: RoverModule):
   ret = defaultdict(dict)
   info = mod.debug_info
   for t, k, v in info:
@@ -91,7 +91,7 @@ class ExperienceRelay(object):
     else:
       self._experience = experience
 
-    self._env = EnvPhysics(mpimg.imread(GROUND_TRUTH_MAP))
+    self._env = GameEnvironment(mpimg.imread(GROUND_TRUTH_MAP))
     self._env.load(os.path.join(path, 'environment'))
     self._setup_agent()
 

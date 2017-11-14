@@ -2,16 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b0f3f4f-d6ff-4112-af11-cc434796c7db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_inference.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/__init__.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_dataset.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_dataset.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_loss.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_loss.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_main.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_main.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/geometry.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/calibrated.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/cv2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/interface.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/pitch_calibrated.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/strip_interpolation.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/threshold_extractor.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/zxy_calibrated.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/model/perspective/zyx_calibrated.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/navi_policy/proactive/v0/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/v0/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/v0/max_angle_policy.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/v0/neural_crawler_policy.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/v0/wall_crawler_policy.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/perception/ctr.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/perception/v0/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/planner/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/planner/ctr.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/planner/interface.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/planner/v0/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/planner/v0/a_star_planner.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/planner/v0/max_angle_planner.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/spec.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/state.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rover_agent/_global_step.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rover_agent/perception/_interface.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rover_agent/perception/_registry.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rover_agent/perception/v0/maneuverable_particles.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/env_physics.py" afterPath="$PROJECT_DIR$/game_env.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/__init__.py" afterPath="$PROJECT_DIR$/rover/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/_agent.py" afterPath="$PROJECT_DIR$/rover/agent.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/agent_module.py" afterPath="$PROJECT_DIR$/rover/interface.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/model_ctr.py" afterPath="$PROJECT_DIR$/rover/model_ctr.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/__init__.py" afterPath="$PROJECT_DIR$/rover/navi_policy/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/_interface.py" afterPath="$PROJECT_DIR$/rover/navi_policy/_interface.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/proactive/__init__.py" afterPath="$PROJECT_DIR$/rover/navi_policy/proactive/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/proactive/_registry.py" afterPath="$PROJECT_DIR$/rover/navi_policy/proactive/_registry.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/proactive/v0/__init__.py" afterPath="$PROJECT_DIR$/rover/controller/v0/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/proactive/v0/max_angle_policy.py" afterPath="$PROJECT_DIR$/rover/navi_policy/proactive/v0/max_angle_policy.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/proactive/v0/stay_policy.py" afterPath="$PROJECT_DIR$/rover/navi_policy/proactive/v0/stay_policy.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/__init__.py" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/_registry.py" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/_registry.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/__init__.py" afterPath="$PROJECT_DIR$/rover/controller/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/max_angle_policy.py" afterPath="$PROJECT_DIR$/rover/model/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/neural_crawler_policy.py" afterPath="$PROJECT_DIR$/rover/controller/interface.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/uniform_policy.py" afterPath="$PROJECT_DIR$/rover/navi_policy/reactive/v0/uniform_policy.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/wall_crawler_policy.py" afterPath="$PROJECT_DIR$/rover/controller/ctr.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/perception/__init__.py" afterPath="$PROJECT_DIR$/rover/perception/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/perception/v0/__init__.py" afterPath="$PROJECT_DIR$/rover/config.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/perception/v0/calibrated_perspective.py" afterPath="$PROJECT_DIR$/rover/perception/v0/calibrated.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/perception/v0/cv2_perspective.py" afterPath="$PROJECT_DIR$/rover/perception/v0/cv2.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/perception/v0/pitch_calibrated_perspective.py" afterPath="$PROJECT_DIR$/rover/perception/v0/pitch.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/perception/v0/zyx_rotated_perspective.py" afterPath="$PROJECT_DIR$/rover/perception/v0/zyx.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/state_action/__init__.py" afterPath="$PROJECT_DIR$/rover/state_action/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/state_action/_action.py" afterPath="$PROJECT_DIR$/rover/state_action/_action.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/state_action/_raw_state.py" afterPath="$PROJECT_DIR$/rover/state_action/_raw_state.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rover_agent/state_action/_rover_state.py" afterPath="$PROJECT_DIR$/rover/state_action/_rover_state.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drive_rover.py" afterPath="$PROJECT_DIR$/drive_rover.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/replay_analysis/_experience_replay.py" afterPath="$PROJECT_DIR$/replay_analysis/_experience_replay.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/perception/_calibrated_perspective_inference.py" afterPath="$PROJECT_DIR$/rover_model/perception/_calibrated_perspective_inference.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/perception/_gradient_analysis.py" afterPath="$PROJECT_DIR$/rover_model/perception/_gradient_analysis.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_net.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_net.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_process.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_reactor_process.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_train_monitor.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_train_monitor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover_model/reactor_net/_train_thread.py" afterPath="$PROJECT_DIR$/rover_model/reactor_net/_train_thread.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,6 +76,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RoboND_Rover$exception_state.coverage" NAME="exception_state Coverage Results" MODIFIED="1510375629027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rover" />
     <SUITE FILE_PATH="coverage/RoboND_Rover$_preprocess.coverage" NAME="_preprocess Coverage Results" MODIFIED="1497153137788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rover_model/reactor_net" />
   </component>
   <component name="DatabaseView">
@@ -32,124 +88,117 @@
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="RoboND_Rover" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49556962">
+    <splitter split-orientation="horizontal" split-proportion="0.52110815">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="__main__.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/__main__.py">
+          <file leaf-file-name="interface.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/planner/interface.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                <state relative-caret-position="0">
+                  <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_reactor_net.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_net.py">
+          <file leaf-file-name="max_angle_planner.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/planner/v0/max_angle_planner.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1180">
-                  <caret line="64" column="25" lean-forward="false" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
-                    <element signature="e#0#23#0" expanded="true" />
+                    <element signature="e#0#18#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_utils.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_utils.py">
+          <file leaf-file-name="a_star_planner.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/planner/v0/a_star_planner.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="160">
-                  <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+                <state relative-caret-position="162">
+                  <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="model_ctr.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/model_ctr.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="558">
+                  <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="spec.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/spec.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="558">
+                  <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_reactor_process.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_process.py">
+          <file leaf-file-name="ctr.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/planner/ctr.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1260">
-                  <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#9#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/__init__.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#44#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_agent/state_action/__init__.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
-                  <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+                <state relative-caret-position="0">
+                  <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_reactor_dataset.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_dataset.py">
+          <file leaf-file-name="ctr.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/perception/ctr.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="140">
-                  <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+                <state relative-caret-position="288">
+                  <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="cv2.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/perception/v0/cv2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="543">
+                  <caret line="49" column="39" lean-forward="false" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
                   <folding>
-                    <element signature="e#0#9#0" expanded="true" />
+                    <element signature="e#0#37#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_train_monitor.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_train_monitor.py">
+          <file leaf-file-name="geometry.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/model/geometry.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="500">
-                  <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#0#9#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="723">
+                  <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_reactor_main.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_main.py">
+          <file leaf-file-name="cv2.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/rover/model/perspective/cv2.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="740">
-                  <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-                  <folding>
-                    <element signature="e#0#13#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="_reactor_loss.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_loss.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#0#23#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="648">
+                  <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -158,36 +207,120 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="_train_thread.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_train_thread.py">
+          <file leaf-file-name="_stripwise_interpolation.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover_model/perception/_stripwise_interpolation.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+                <state relative-caret-position="1206">
+                  <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
                   <folding>
-                    <element signature="e#0#11#0" expanded="true" />
+                    <element signature="e#0#10#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_reactor_inference.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_inference.py">
+          <file leaf-file-name="_zxy_rotated_perspective_inference.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover_model/perception/_zxy_rotated_perspective_inference.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="100">
-                  <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+                <state relative-caret-position="1458">
+                  <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
                   <folding>
-                    <element signature="e#0#9#0" expanded="true" />
+                    <element signature="e#0#18#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_load_dataset.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/replay_analysis/_load_dataset.py">
+          <file leaf-file-name="state.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/state.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1280">
-                  <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
+                <state relative-caret-position="756">
+                  <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_zyx_rotated_perspective_inference.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover_model/perception/_zyx_rotated_perspective_inference.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="756">
+                  <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_pitch_calibrated_perspective.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover_model/perception/_pitch_calibrated_perspective.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1098">
+                  <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="calibrated.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/perception/v0/calibrated.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="324">
+                  <caret line="30" column="27" lean-forward="false" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#0#51#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pitch.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover/perception/v0/pitch.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1026">
+                  <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_cv2_perspective.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover_model/perception/_cv2_perspective.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_calibrated_perspective_inference.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rover_model/perception/_calibrated_perspective_inference.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="594">
+                  <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="interface.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/rover/interface.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="349">
+                  <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -216,7 +349,6 @@
       <find>Rover</find>
       <find>IMAGE_FOLDER</find>
       <find>_sample_pos</find>
-      <find>sample</find>
       <find>_samples_pos</find>
       <find>samples_pose</find>
       <find>samples_found</find>
@@ -232,6 +364,9 @@
       <find>view_</find>
       <find>initia</find>
       <find>output</find>
+      <find>BytesIO</find>
+      <find>sample</find>
+      <find>RoverConfig</find>
     </findStrings>
     <replaceStrings>
       <replace>self</replace>
@@ -247,57 +382,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rover_spec/__init__.py" />
-        <option value="$PROJECT_DIR$/replay_analysis/_load_dataset.py" />
-        <option value="$PROJECT_DIR$/rover_agent/agent_module.py" />
-        <option value="$PROJECT_DIR$/rover_agent/perception/_registry.py" />
-        <option value="$PROJECT_DIR$/rover_agent/state_action/_raw_state.py" />
-        <option value="$PROJECT_DIR$/env_physics.py" />
-        <option value="$PROJECT_DIR$/rover_agent/state_action/_rover_state.py" />
-        <option value="$PROJECT_DIR$/rover_agent/_agent.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_calibrated_perspective_inference.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_cv2_perspective.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_pitch_calibrated_perspective.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_zxy_rotated_perspective_inference.py" />
-        <option value="$PROJECT_DIR$/rover_agent/perception/v0/cv2_perspective.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_perspective_render.py" />
-        <option value="$PROJECT_DIR$/rover_agent/perception/v0/calibrated_perspective.py" />
-        <option value="$PROJECT_DIR$/replay_analysis/_gradient_analysis.py" />
-        <option value="$PROJECT_DIR$/replay_analysis/_experience_replay.py" />
-        <option value="$PROJECT_DIR$/rover_config/_parse_config.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_stripwise_interpolation.py" />
-        <option value="$PROJECT_DIR$/rover_agent/perception/v0/pitch_calibrated_perspective.py" />
-        <option value="$PROJECT_DIR$/rover_model/perception/_zyx_rotated_perspective_inference.py" />
-        <option value="$PROJECT_DIR$/rover_agent/model_ctr.py" />
-        <option value="$PROJECT_DIR$/rover_agent/perception/v0/zyx_rotated_perspective.py" />
-        <option value="$PROJECT_DIR$/rover_model/geometry/__init__.py" />
-        <option value="$PROJECT_DIR$/rover_model/geometry/teleop_policy.py" />
-        <option value="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/teleop_policy.py" />
-        <option value="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/uniform_policy.py" />
-        <option value="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/neural_reactive_policy.py" />
-        <option value="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/max_angle_policy.py" />
-        <option value="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/wall_crawler_policy.py" />
-        <option value="$PROJECT_DIR$/rover_model/davenet/_build_graph.py" />
-        <option value="$PROJECT_DIR$/replay_analysis/_analysis_primatives.py" />
-        <option value="$PROJECT_DIR$/rover_model/davenet/train/_build_graph.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/train/_build_graph.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/reactor_loss.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_preprocess.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_dataset.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/__main__.py" />
-        <option value="$PROJECT_DIR$/replay_analysis/_visualize_action.py" />
-        <option value="$PROJECT_DIR$/replay_analysis/__init__.py" />
-        <option value="$PROJECT_DIR$/rover_agent/state_action/_action.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/utils.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_reactor_main.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_reactor_inference.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_reactor_loss.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_reactor_net.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/__init__.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_reactor_process.py" />
-        <option value="$PROJECT_DIR$/rover_model/reactor_net/_reactor_dataset.py" />
         <option value="$PROJECT_DIR$/rover_model/reactor_net/_train_thread.py" />
         <option value="$PROJECT_DIR$/rover_model/reactor_net/_train_monitor.py" />
+        <option value="$PROJECT_DIR$/rover_agent/_agent.py" />
+        <option value="$PROJECT_DIR$/rover_model/perception/_gradient_analysis.py" />
+        <option value="$PROJECT_DIR$/rover/state_action/map_state.py" />
+        <option value="$PROJECT_DIR$/rover/state_action/rover_state.py" />
+        <option value="$PROJECT_DIR$/rover/rover_state.py" />
+        <option value="$PROJECT_DIR$/rover/_agent.py" />
+        <option value="$PROJECT_DIR$/rover_config/_parse_config.py" />
+        <option value="$PROJECT_DIR$/rover/perception/_registry.py" />
+        <option value="$PROJECT_DIR$/rover/agent_module.py" />
+        <option value="$PROJECT_DIR$/rover/state.py" />
+        <option value="$PROJECT_DIR$/rover/controller/interface.py" />
+        <option value="$PROJECT_DIR$/rover/exception_state.py" />
+        <option value="$PROJECT_DIR$/rover/except_state.py" />
+        <option value="$PROJECT_DIR$/rover/perception/interface.py" />
+        <option value="$PROJECT_DIR$/rover/planner/interface.py" />
+        <option value="$PROJECT_DIR$/rover/trajectory_plan.py" />
+        <option value="$PROJECT_DIR$/rover/controller/ctr.py" />
+        <option value="$PROJECT_DIR$/rover/perception/ctr.py" />
+        <option value="$PROJECT_DIR$/rover/perception/__init__.py" />
+        <option value="$PROJECT_DIR$/rover/perception/v0/calibrated_perspective.py" />
+        <option value="$PROJECT_DIR$/rover/map_update.py" />
+        <option value="$PROJECT_DIR$/rover/agent.py" />
+        <option value="$PROJECT_DIR$/rover/config.py" />
+        <option value="$PROJECT_DIR$/env_physics.py" />
+        <option value="$PROJECT_DIR$/rover/spec.py" />
+        <option value="$PROJECT_DIR$/game_env.py" />
+        <option value="$PROJECT_DIR$/drive_rover.py" />
+        <option value="$PROJECT_DIR$/rover/state_action/_action.py" />
+        <option value="$PROJECT_DIR$/rover/model/geometry.py" />
+        <option value="$PROJECT_DIR$/rover_model/perception/_interface.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/interface.py" />
+        <option value="$PROJECT_DIR$/rover_model/perception/_calibrated_perspective_inference.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/calibrated.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/cv2.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/pitch_calibrated.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/strip_interpolation.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/zyx_calibrated.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/zxy_calibrated.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/threshold_extractor.py" />
+        <option value="$PROJECT_DIR$/rover/model/perspective/__init__.py" />
+        <option value="$PROJECT_DIR$/rover/model_ctr.py" />
+        <option value="$PROJECT_DIR$/rover/perception/v0/calibrated.py" />
+        <option value="$PROJECT_DIR$/rover/perception/v0/pitch.py" />
+        <option value="$PROJECT_DIR$/rover/perception/v0/cv2.py" />
+        <option value="$PROJECT_DIR$/rover/perception/v0/zyx.py" />
+        <option value="$PROJECT_DIR$/rover/planner/ctr.py" />
+        <option value="$PROJECT_DIR$/rover/interface.py" />
+        <option value="$PROJECT_DIR$/rover/planner/v0/max_angle_planner.py" />
+        <option value="$PROJECT_DIR$/rover/planner/v0/a_star_planner.py" />
       </list>
     </option>
   </component>
@@ -307,11 +442,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="375" />
-    <option name="width" value="1922" />
-    <option name="height" value="1092" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="65" />
+    <option name="y" value="382" />
+    <option name="width" value="1855" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -331,42 +466,76 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RoboND_Rover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="rover" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="rover" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="rover" type="462c0819:PsiDirectoryNode" />
+              <item name="perception" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="rover" type="462c0819:PsiDirectoryNode" />
+              <item name="perception" type="462c0819:PsiDirectoryNode" />
+              <item name="v0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="rover" type="462c0819:PsiDirectoryNode" />
+              <item name="planner" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboND_Rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="rover" type="462c0819:PsiDirectoryNode" />
+              <item name="planner" type="462c0819:PsiDirectoryNode" />
+              <item name="v0" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$USER_HOME$/.app/python3.6/envs/RoboND/bin/python" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/RoboND-Rover-Baseline" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="process&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;reactorda&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_dataset.py&#10;data&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_load_dataset.py&#10;reactor_tra&#9;null&#9;null&#10;inferen&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_inference.py&#10;reactor_t&#9;null&#9;null&#10;datase&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_dataset.py&#10;_tra&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_train_thread.py&#10;pro&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;pr&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;tra&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_train_monitor.py&#10;model&#9;null&#9;null&#10;acti&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/state_action/_action.py&#10;Exper&#9;null&#9;null&#10;proce&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;drop_li&#9;null&#9;null&#10;zy&#9;null&#9;null&#10;cv2&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/cv2_perspective.py&#10;z&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/zyx_rotated_perspective.py&#10;pit&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/pitch_calibrated_perspective.py&#10;zyx&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/zyx_rotated_perspective.py&#10;interp&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_stripwise_interpolation.py&#10;pi&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/pitch_calibrated_perspective.py&#10;cali&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/calibrated_perspective.py&#10;rover_con&#9;null&#9;null&#10;ex&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_experience_replay.py&#10;str&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_stripwise_interpolation.py&#10;render&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_perspective_render.py&#10;ana&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_analysis_primatives.py&#10;gra&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_gradient_analysis.py&#10;QUAN&#9;null&#9;null&#10;quant_un&#9;null&#9;null&#10;geo&#9;null&#9;null&#10;roverage&#9;null&#9;null&#10;agen&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/agent_module.py&#10;state&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/state_action/_rover_state.py&#10;calib&#9;null&#9;null&#10;ca&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/calibrated_perspective.py&#10;singular_to&#9;null&#9;null&#10;pri&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_analysis_primatives.py&#10;exper&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_experience_replay.py&#10;agent&#9;null&#9;null&#10;create_instan&#9;null&#9;null&#10;ground&#9;null&#9;null&#10;analysis&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_analysis_primatives.py&#10;pitch&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/pitch_calibrated_perspective.py&#10;geometr&#9;null&#9;null&#10;ZY&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/zyx_rotated_perspective.py&#10;INTERPO&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_stripwise_interpolation.py&#10;constan&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/constant_perspective.py" />
+    <property name="SearchEverywhereHistoryKey" value="ctr&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover/controller/ctr.py&#10;plan&#9;null&#9;null&#10;interfac&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover/perception/interface.py&#10;process&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;reactorda&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_dataset.py&#10;data&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_load_dataset.py&#10;reactor_tra&#9;null&#9;null&#10;inferen&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_inference.py&#10;reactor_t&#9;null&#9;null&#10;datase&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_dataset.py&#10;_tra&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_train_thread.py&#10;pro&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;pr&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;tra&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_train_monitor.py&#10;model&#9;null&#9;null&#10;acti&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/state_action/_action.py&#10;Exper&#9;null&#9;null&#10;proce&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/reactor_net/_reactor_process.py&#10;drop_li&#9;null&#9;null&#10;zy&#9;null&#9;null&#10;cv2&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/cv2_perspective.py&#10;z&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/zyx_rotated_perspective.py&#10;pit&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/pitch_calibrated_perspective.py&#10;zyx&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/zyx_rotated_perspective.py&#10;interp&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_stripwise_interpolation.py&#10;pi&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/pitch_calibrated_perspective.py&#10;cali&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/calibrated_perspective.py&#10;rover_con&#9;null&#9;null&#10;ex&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_experience_replay.py&#10;str&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_stripwise_interpolation.py&#10;render&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_model/perception/_perspective_render.py&#10;ana&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_analysis_primatives.py&#10;gra&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_gradient_analysis.py&#10;QUAN&#9;null&#9;null&#10;quant_un&#9;null&#9;null&#10;geo&#9;null&#9;null&#10;roverage&#9;null&#9;null&#10;agen&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/agent_module.py&#10;state&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/state_action/_rover_state.py&#10;calib&#9;null&#9;null&#10;ca&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/calibrated_perspective.py&#10;singular_to&#9;null&#9;null&#10;pri&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_analysis_primatives.py&#10;exper&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_experience_replay.py&#10;agent&#9;null&#9;null&#10;create_instan&#9;null&#9;null&#10;ground&#9;null&#9;null&#10;analysis&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/replay_analysis/_analysis_primatives.py&#10;pitch&#9;FILE&#9;file:///home/pu/robotics/RoboND-Rover-Project/code/rover_agent/perception/v0/pitch_calibrated_perspective.py&#10;geometr&#9;null&#9;null" />
     <property name="full.screen.before.presentation.mode" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rover/perception" />
+      <recent name="$PROJECT_DIR$/rover/navi_policy/proactive" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rover" />
       <recent name="$PROJECT_DIR$/rover_model/reactor_net" />
       <recent name="$PROJECT_DIR$/rover_model/davenet/train" />
       <recent name="$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0" />
       <recent name="$PROJECT_DIR$/rover_agent" />
-      <recent name="$PROJECT_DIR$/rover_model/perception" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/rover/perception" />
-      <recent name="$PROJECT_DIR$/rover/navi_policy/proactive" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -381,8 +550,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python._preprocess">
-    <configuration default="false" name="_preprocess" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.exception_state">
+    <configuration name="_preprocess" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -399,18 +568,19 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <method />
     </configuration>
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
       <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="WORKING_DIRECTORY" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <module name="" />
       <envs />
-      <method />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="code" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -430,99 +600,6 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="code" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="code" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="code" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <module name="code" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -542,6 +619,90 @@
       <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="code" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="code" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="code" />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -560,7 +721,7 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration default="false" name="code" type="PythonConfigurationType" factoryName="Python" singleton="true">
+    <configuration name="code" type="PythonConfigurationType" factoryName="Python" singleton="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -577,15 +738,34 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <method />
     </configuration>
-    <list size="2">
+    <configuration name="exception_state" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rover" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RoboND_Rover" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rover/except_state.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.code" />
       <item index="1" class="java.lang.String" itemvalue="Python._preprocess" />
+      <item index="2" class="java.lang.String" itemvalue="Python.exception_state" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python._preprocess" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.exception_state" />
+        <item index="1" class="java.lang.String" itemvalue="Python._preprocess" />
       </list>
     </recent_temporary>
   </component>
@@ -615,27 +795,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="375" width="1922" height="1092" extended-state="6" />
+    <frame x="65" y="382" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16595517" sideWeight="0.4906054" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16362631" sideWeight="0.4906054" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776618" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15421557" sideWeight="0.5093946" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="167" y="518" width="1657" height="892" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -661,7 +842,7 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -673,390 +854,419 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/uniform_policy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/__init__.py">
+    <entry file="file://$PROJECT_DIR$/rover/planner/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/client/session.py">
+    <entry file="file://$PROJECT_DIR$/rover/controller/ctr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1394">
-          <caret line="684" column="0" lean-forward="true" selection-start-line="684" selection-start-column="0" selection-end-line="684" selection-end-column="0" />
+        <state relative-caret-position="288">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="27" column="64" lean-forward="true" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/session_run_hook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/contrib/learn/python/learn/monitors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="746" column="0" lean-forward="true" selection-start-line="746" selection-start-column="0" selection-end-line="746" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/contrib/learn/python/learn/session_run_hook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="66" lean-forward="true" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run.py" />
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="555" column="30" lean-forward="true" selection-start-line="555" selection-start-column="30" selection-end-line="555" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/max_angle_policy.py">
+    <entry file="file://$PROJECT_DIR$/rover/except_state.py" />
+    <entry file="file://$PROJECT_DIR$/rover/trajectory_plan.py" />
+    <entry file="file://$PROJECT_DIR$/rover/perception/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_agent/navi_policy/reactive/v0/wall_crawler_policy.py">
+    <entry file="file://$PROJECT_DIR$/rover/perception/interface.py" />
+    <entry file="file://$PROJECT_DIR$/rover/map_update.py" />
+    <entry file="file://$PROJECT_DIR$/rover_config/_parse_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/footage.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="188" column="0" lean-forward="true" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/state_action/_action.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-519">
+          <caret line="79" column="43" lean-forward="false" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_replay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1389">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_model/geometry/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_calibrated_perspective_inference.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_gradient_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_interface.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/platform/app.py">
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_zyx_rotated_perspective_inference.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="786">
-          <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+        <state relative-caret-position="756">
+          <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/gflags.py" />
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/resource_variable_ops.py">
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_zxy_rotated_perspective_inference.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-430">
-          <caret line="436" column="30" lean-forward="true" selection-start-line="436" selection-start-column="30" selection-end-line="436" selection-end-column="30" />
+        <state relative-caret-position="1458">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/variables.py">
+    <entry file="file://$PROJECT_DIR$/drive_rover.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="1216" column="44" lean-forward="false" selection-start-line="1216" selection-start-column="44" selection-end-line="1216" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="-821">
+          <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/replay_analysis/_visualize_action.py">
+    <entry file="file://$PROJECT_DIR$/rover/perception/v0/maneuverable_particles.py" />
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/zyx_calibrated.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="727">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/nn_ops.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/pitch_calibrated.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="1694" column="0" lean-forward="true" selection-start-line="1694" selection-start-column="0" selection-end-line="1694" selection-end-column="0" />
+        <state relative-caret-position="54">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/optimizer.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/zxy_calibrated.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="278" column="28" lean-forward="true" selection-start-line="278" selection-start-column="28" selection-end-line="278" selection-end-column="28" />
+        <state relative-caret-position="309">
+          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1252695100/numpy/core/umath.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/strip_interpolation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="2331" column="4" lean-forward="false" selection-start-line="2331" selection-start-column="4" selection-end-line="2331" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="828">
+          <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/framework/ops.py">
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_stripwise_interpolation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="4272" column="51" lean-forward="true" selection-start-line="4272" selection-start-column="51" selection-end-line="4272" selection-end-column="51" />
-          <folding />
+        <state relative-caret-position="1206">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/adam.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/io_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="170" column="6" lean-forward="false" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/queue_runner_impl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="417" column="0" lean-forward="true" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/coordinator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2870">
-          <caret line="127" column="6" lean-forward="false" selection-start-line="127" selection-start-column="6" selection-end-line="127" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="176" column="31" lean-forward="false" selection-start-line="176" selection-start-column="31" selection-end-line="176" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/replay_analysis/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1252695100/atexit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="317" column="18" lean-forward="true" selection-start-line="317" selection-start-column="18" selection-end-line="317" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/gen_state_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="540" column="0" lean-forward="true" selection-start-line="540" selection-start-column="0" selection-end-line="540" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/rnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="1054" column="36" lean-forward="true" selection-start-line="1054" selection-start-column="36" selection-end-line="1054" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/training/saver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1270">
-          <caret line="1661" column="0" lean-forward="true" selection-start-line="1661" selection-start-column="0" selection-end-line="1661" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/variable_scope.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="1432" column="30" lean-forward="true" selection-start-line="1432" selection-start-column="30" selection-end-line="1432" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rover_spec/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="54">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/gen_array_ops.py">
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_cv2_perspective.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="1142" column="33" lean-forward="true" selection-start-line="1142" selection-start-column="33" selection-end-line="1142" selection-end-column="33" />
+        <state relative-caret-position="72">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover_model/perception/_pitch_calibrated_perspective.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1098">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/state_action/_rover_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/layers/core.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/interface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="196" column="23" lean-forward="true" selection-start-line="196" selection-start-column="23" selection-end-line="196" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/replay_analysis/_load_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
+        <state relative-caret-position="414">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/array_ops.py">
+    <entry file="file://$PROJECT_DIR$/rover/state.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="1511" column="0" lean-forward="true" selection-start-line="1511" selection-start-column="0" selection-end-line="1511" selection-end-column="0" />
+        <state relative-caret-position="756">
+          <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.app/anaconda3/envs/RoboND/lib/python3.5/site-packages/tensorflow/python/ops/math_ops.py">
+    <entry file="file://$PROJECT_DIR$/rover/perception/v0/zyx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="738" column="0" lean-forward="true" selection-start-line="738" selection-start-column="0" selection-end-line="738" selection-end-column="0" />
+        <state relative-caret-position="1152">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/perception/v0/calibrated.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="30" column="27" lean-forward="false" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/calibrated.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/perception/v0/pitch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/planner/interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_utils.py">
+    <entry file="file://$PROJECT_DIR$/rover/interface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="349">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/planner/v0/max_angle_planner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/planner/v0/a_star_planner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/threshold_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/planner/ctr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_agent/state_action/_action.py">
+    <entry file="file://$PROJECT_DIR$/rover/perception/ctr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_agent/state_action/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="288">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/__init__.py">
+    <entry file="file://$PROJECT_DIR$/rover/model_ctr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="558">
+          <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
           <folding>
-            <element signature="e#0#44#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_process.py">
+    <entry file="file://$PROJECT_DIR$/rover/spec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/__main__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="558">
+          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_loss.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/geometry.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        <state relative-caret-position="723">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/perception/v0/cv2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="49" column="39" lean-forward="false" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_main.py">
+    <entry file="file://$PROJECT_DIR$/rover/model/perspective/cv2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_inference.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_train_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_reactor_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1180">
-          <caret line="64" column="25" lean-forward="false" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover_model/reactor_net/_train_monitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="648">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

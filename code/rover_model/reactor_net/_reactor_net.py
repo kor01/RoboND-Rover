@@ -1,7 +1,7 @@
 import tensorflow as tf
-from rover_agent.state_action import THROTTLE_SHAPE
-from rover_agent.state_action import BRAKE_SHAPE
-from rover_agent.state_action import STEER_SHAPE
+from rover.state_action import THROTTLE_SHAPE
+from rover.state_action import BRAKE_SHAPE
+from rover.state_action import STEER_SHAPE
 
 from collections import namedtuple
 

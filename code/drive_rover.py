@@ -12,14 +12,15 @@ from flask import Flask
 from io import BytesIO
 from PIL import Image
 
-from env_physics import EnvPhysics
-from rover_agent import RoverAgent
+from game_env import GameEnvironment
+from rover.agent import RoverAgent
+from rover.config import RoverConfig
 
-from rover_spec import GROUND_TRUTH_MAP
-from rover_spec import METRIC_DTYPE
+from game_env import GROUND_TRUTH_MAP
+from game_env import METRIC_DTYPE
 
 from rover_replay import RoverReplay
-from rover_config import RoverConfig
+
 
 ROVER_AGENT = None
 ROVER_REPLAY = None
@@ -31,7 +32,7 @@ WITH_MAP = False
 
 MODULE_PATH = os.path.dirname(__file__)
 
-ENV_PHYSIC = EnvPhysics(mpimg.imread(GROUND_TRUTH_MAP))
+GAME_ENV = GameEnvironment(mpimg.imread(GROUND_TRUTH_MAP))
 
 FLASK_APP = Flask(__name__)
 
@@ -65,28 +66,30 @@ def telemetry(sid, msg):
   if msg:
     metrics, frame = parse_message(msg)
 
-    if not ENV_PHYSIC.started:
+    if not GAME_ENV.started:
       # control visibility of the game
-      ENV_PHYSIC.consume(msg)
+      GAME_ENV.consume(msg)
       ground_truth = None if WITH_SAMPLE_LOCATION \
-        else ENV_PHYSIC.ground_truth
-      sample_location = ENV_PHYSIC.samples_pos \
+        else GAME_ENV.ground_truth
+      sample_location = GAME_ENV.samples_pos \
         if WITH_MAP else None
-      ROVER_AGENT.set_env(ground_truth, sample_location)
-      ENV_PHYSIC.ckpt(os.path.join(EXPERIMENT_DIR, 'environment'))
+      ROVER_AGENT.state.initiate(ground_truth, sample_location)
+      GAME_ENV.ckpt(os.path.join(EXPERIMENT_DIR, 'environment'))
     else:
-      ENV_PHYSIC.consume(msg)
+      GAME_ENV.consume(msg)
 
     action = ROVER_AGENT.consume(metrics, frame)
     print(action)
+    if ROVER_AGENT.finished:
+      return
 
     # save replay
     if isinstance(ROVER_REPLAY, RoverReplay):
-      ROVER_REPLAY.consume(frame, metrics, ENV_PHYSIC.current_time)
+      ROVER_REPLAY.consume(frame, metrics, GAME_ENV.current_time)
 
     # flush actions and debug information to environment
     commands = (action.throttle, action.brake, action.steer)
-    pictures = ENV_PHYSIC.create_output_images(
+    pictures = GAME_ENV.create_output_images(
       ROVER_AGENT.world_map, ROVER_AGENT.local_vision)
     send_control(commands, *pictures)
 
@@ -114,7 +117,7 @@ def connect(sid, environ):
 def send_control(commands, image_string1, image_string2):
     # Define commands to be sent to the rover
     print("sending control", len(image_string1), len(image_string2))
-    data={
+    data = {
         'throttle': commands[0].__str__(),
         'brake': commands[1].__str__(),
         'steering_angle': commands[2].__str__(),
@@ -133,10 +136,12 @@ def send_pickup():
 
 
 def exit_handle():
-  global ENV_PHYSIC
+  global GAME_ENV
   ROVER_REPLAY.flush()
 
+
 atexit.register(exit_handle)
+
 
 if __name__ == '__main__':
 
